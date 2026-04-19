@@ -95,7 +95,6 @@ That combination is the core idea of the project: not just collecting jobs, but 
 - Tracker feedback loop so application outcomes can influence source evaluation
 - Smoke test script for fast validation without a full scrape
 - GitHub Actions workflow that runs the smoke test on pushes and pull requests
-- Public-release tooling that creates a sanitized copy without private resumes, tracker state, cache files, or generated output
 
 ## Project Structure
 
@@ -103,7 +102,7 @@ That combination is the core idea of the project: not just collecting jobs, but 
 - `intake/`: source collectors
 - `pipeline/`: scoring, filtering, ranking, diagnostics, reporting, and tracker logic
 - `sources/`: source definitions and company lists
-- `scripts/`: smoke testing and public-release helpers
+- `scripts/`: smoke-test validation
 
 For a guided reading order, see `CODEBASE_GUIDE.md`.
 
@@ -144,9 +143,7 @@ The smoke test:
 
 - compiles project Python files
 - imports core modules
-- rebuilds the sanitized public copy when run from the private repo
-- validates the current checkout when run from the public repo
-- runs the release safety check
+- validates the current checkout
 
 ## Roadmap
 
