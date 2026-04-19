@@ -8,6 +8,14 @@ This project is part automation tool and part decision-support system. The goal 
 
 Built a multi-source job-intelligence pipeline in Python that collects postings from ATS boards and aggregators, normalizes them into a shared schema, scores them against multiple resume tracks, and generates a prioritized apply queue with diagnostic reporting.
 
+This public repo is a sanitized showcase version of a larger private working project.
+
+## How It Works
+
+- Input: job postings from ATS boards, custom career pages, and aggregators
+- Processing: normalize, filter, score, and rank the postings
+- Output: a prioritized apply queue plus source-health and ranking diagnostics
+
 ## Why This Exists
 
 Most job boards create the same problem:
@@ -36,7 +44,7 @@ The pipeline currently pulls from:
 
 ## Outputs
 
-The full private workflow produces:
+The pipeline produces:
 
 - `results/current/apply_queue.md`: prioritized jobs to act on first
 - `results/current/jobs_output.md`: broader ranked job report
@@ -114,7 +122,7 @@ Copy-Item resume_cyber.example.txt resume_cyber.txt
 Copy-Item resume_it_support.example.txt resume_it_support.txt
 ```
 
-Then edit those new `.txt` files with your own resume text. The real resume files are ignored by Git and are intentionally not part of the public repo.
+Then edit those new `.txt` files with your own resume text. Those real resume files stay local and are not part of this public repo.
 
 Run the full pipeline:
 
@@ -139,42 +147,6 @@ The smoke test:
 - rebuilds the sanitized public copy when run from the private repo
 - validates the current checkout when run from the public repo
 - runs the release safety check
-
-## Privacy-Safe Public Release
-
-This project has a private working form and a sanitized public-release flow.
-
-The real private/local files are intentionally excluded from version control:
-
-- `resume_cyber.txt`
-- `resume_it_support.txt`
-- `jobs_cache.json`
-- `results/current/`
-- `results/tracker/application_tracker.*`
-- `results/diagnostics/`
-- `results/archive/`
-
-Use the example/template files instead:
-
-- `resume_cyber.example.txt`
-- `resume_it_support.example.txt`
-- `results/tracker/application_tracker.example.md`
-
-To generate the public-safe copy:
-
-```powershell
-python scripts\make_public_release.py
-```
-
-That writes a sibling folder named `job_tool_public`.
-
-To validate the release candidate:
-
-```powershell
-python scripts\check_release_safety.py --skip-git
-```
-
-See `PUBLIC_RELEASE_CHECKLIST.md` for the full release process.
 
 ## Roadmap
 
