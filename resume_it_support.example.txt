@@ -1,0 +1,11 @@
+Replace this file with a short IT-support-focused resume text export.
+
+Keep this example generic so it is safe to commit publicly.
+
+Suggested sections:
+- Summary
+- Help desk / support skills
+- Troubleshooting experience
+- Systems / networking tools
+- Customer-facing experience
+- Education
