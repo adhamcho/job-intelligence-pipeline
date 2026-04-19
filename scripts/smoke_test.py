@@ -25,7 +25,7 @@ SKIP_DIRS = {
 
 def is_public_repo() -> bool:
     """Return True when running from the sanitized public repo."""
-    return ROOT.name.endswith("_public")
+    return not (ROOT / "scripts" / "make_public_release.py").exists()
 
 
 def project_python_files() -> list[Path]:
